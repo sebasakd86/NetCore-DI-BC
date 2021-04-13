@@ -23,15 +23,15 @@ namespace NetCore_DI.Controllers
         public IActionResult Index()
         {
             HomeVM hVm = new HomeVM();
-            MarketForecaster mForecaster = new MarketForecaster();
+            var mForecaster = new MarketForecaster_V2();
             var currentMarket = mForecaster.GetMarketPrediction();
             switch(currentMarket.MarketCondition)
             {
                 case MarketCondition.StableDown:
-                    hVm.MarketForecast ="It's crashing down!!!!";
+                    hVm.MarketForecast ="Market's crashing down!!!!";
                     break;
                 case MarketCondition.Volatile:
-                    hVm.MarketForecast ="It's all over the place!";
+                    hVm.MarketForecast ="Market's all over the place!";
                     break;
                 case MarketCondition.StableUp:
                     hVm.MarketForecast ="Bull run jump aboard";
