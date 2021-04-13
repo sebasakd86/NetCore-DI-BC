@@ -1,6 +1,6 @@
 namespace NetCore_DI.Services
 {
-    public class MarketForecaster
+    public class MarketForecaster : IMarketForecaster
     {
         public MarketResult GetMarketPrediction()
         {

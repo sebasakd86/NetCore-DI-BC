@@ -12,6 +12,7 @@ using NetCore_DI.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetCore_DI.Services;
 
 namespace NetCore_DI
 {
@@ -34,7 +35,9 @@ namespace NetCore_DI
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            services.AddTransient<IMarketForecaster, MarketForecaster>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

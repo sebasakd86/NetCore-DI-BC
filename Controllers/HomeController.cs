@@ -14,22 +14,17 @@ namespace NetCore_DI.Controllers
     public class HomeController : Controller
     {
         private HomeVM hVm = new HomeVM();
-        public HomeController()
+        private readonly IMarketForecaster _forecaster;
+        public HomeController(IMarketForecaster forecaster)
         {
-            
+            this._forecaster = forecaster;
         }
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        
 
         public IActionResult Index()
         {
             
-            var mForecaster = new MarketForecaster_V2();
-            var currentMarket = mForecaster.GetMarketPrediction();
+            var currentMarket = _forecaster.GetMarketPrediction();
             switch(currentMarket.MarketCondition)
             {
                 case MarketCondition.StableDown:

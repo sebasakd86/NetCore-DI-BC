@@ -3,7 +3,7 @@ namespace NetCore_DI.Services
     /// <summary>
     /// New SUPER Version of the market forecaster.
     /// </summary>
-    public class MarketForecaster_V2
+    public class MarketForecaster_V2 : IMarketForecaster
     {
         public MarketResult GetMarketPrediction()
         {
